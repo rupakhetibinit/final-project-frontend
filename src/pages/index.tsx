@@ -19,6 +19,7 @@ import {
   GetServerSidePropsResult,
   InferGetServerSidePropsType,
 } from "next";
+import Head from "next/head";
 
 export async function getServerSideProps({
   req,
@@ -39,6 +40,9 @@ export default function HomePage(
 ) {
   return (
     <React.Fragment>
+      <Head>
+        <title>Trendyy | Analyze your market</title>
+      </Head>
       <AppBar
         position="static"
         color="default"
