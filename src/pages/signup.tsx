@@ -158,7 +158,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign Up for a Trendyy account
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
