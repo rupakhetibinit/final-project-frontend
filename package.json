@@ -23,6 +23,7 @@
     "@visx/scale": "^3.0.0",
     "@visx/text": "^3.0.0",
     "@visx/wordcloud": "^3.0.0",
+    "dayjs": "^1.11.7",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "lucia-auth": "^1.4.0",
