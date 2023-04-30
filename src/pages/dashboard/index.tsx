@@ -1,35 +1,25 @@
 import { Layout } from "@/components/SideMenu";
 import { auth } from "@/lib/lucia";
-import {
-  Box,
-  CircularProgress,
-  Container,
-  IconButton,
-  List,
-  Paper,
-  Tab,
-  Tabs,
-  TextField,
-  Typography,
-} from "@mui/material";
+
+import CircularProgress from "@mui/material/CircularProgress";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Search from "@mui/icons-material/Search";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FormEvent, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Tweet } from "../api/gettweets";
-import { TweetsState, useTweetsStore } from "@/lib/store";
+import { useTweetsStore } from "@/lib/store";
 import TweetComponent from "@/components/Tweet";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryContainer,
-  VictoryPie,
-  VictoryTheme,
-  VictoryTooltip,
-} from "victory";
 import {
   Bar,
   BarChart,
@@ -42,10 +32,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import WordCloud from "@visx/wordcloud/lib/Wordcloud";
-import { Text } from "@visx/text";
-import { scaleLog } from "@visx/scale";
-import Wordcloud from "@visx/wordcloud/lib/Wordcloud";
 
 export async function getServerSideProps({
   req,
@@ -83,7 +69,7 @@ export default function Dashboard(
     setValue(newValue);
   };
   const router = useRouter();
-  const { analysisTweets } = useTweetsStore();
+
   const handleLogout = async () => {
     const response = await fetch("/api/logout", {
       method: "POST",
@@ -133,7 +119,7 @@ Dashboard.getLayout = function getLayout(page: React.ReactNode) {
   return <Layout>{page}</Layout>;
 };
 
-const SearchBar = () => {
+export const SearchBar = () => {
   const { addTweets, addWordCloud } = useTweetsStore();
   const {
     control,
@@ -393,17 +379,19 @@ function CustomBar() {
 
   return (
     <>
-      <BarChart width={750} height={500} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis domain={[0, 50]} tickCount={5} />
-        <Tooltip />
-        <Legend />
+      {analysisTweets.length !== 0 && (
+        <BarChart width={750} height={500} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis domain={[0, 50]} tickCount={5} />
+          <Tooltip />
+          <Legend />
 
-        <Bar dataKey="positive" fill="#10ba5d" />
-        <Bar dataKey="negative" fill="#fb586e" />
-        <Bar dataKey="neutral" fill="#feac02" />
-      </BarChart>
+          <Bar dataKey="positive" fill="#10ba5d" />
+          <Bar dataKey="negative" fill="#fb586e" />
+          <Bar dataKey="neutral" fill="#feac02" />
+        </BarChart>
+      )}
     </>
   );
 }
