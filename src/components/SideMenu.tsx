@@ -31,13 +31,13 @@ const routes: {
     icon: <SearchRounded />,
   },
   {
-    name: "Weekly Trend",
+    name: "Realtime Trend",
     path: "/dashboard/trend",
     icon: <TrendingUpIcon />,
   },
   {
-    name: "Compare Trends",
-    path: "/dashboard/compare",
+    name: "Weekly Trend",
+    path: "/dashboard/weekly",
     icon: <CompareOutlined />,
   },
 ];
