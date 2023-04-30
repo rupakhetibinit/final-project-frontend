@@ -60,7 +60,7 @@ export default function SignIn() {
       });
       console.log(response);
 
-      if (response.redirected) router.push("/dashboard");
+      if (response.redirected) router.reload();
     }
   };
 
