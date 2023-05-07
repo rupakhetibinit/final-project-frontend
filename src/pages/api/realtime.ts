@@ -1,6 +1,5 @@
 import { countWordsInTweets } from "@/lib/preprocess";
 import { NextApiRequest, NextApiResponse } from "next";
-import { start } from "repl";
 import { TwitterApi } from "twitter-api-v2";
 
 export default async function handler(
@@ -49,10 +48,9 @@ export default async function handler(
   // }
 
   const { query } = JSON.parse(req.body);
+  console.log(query);
   const tweets = await twitterClient.v2.get(
-    `tweets/search/recent?max_results=40&query=` +
-      query +
-      " -is:retweet -has:links -has:mentions lang:en"
+    `tweets/search/recent?max_results=40&query=${query} -is:retweet -has:links -has:mentions lang:en`
   );
 
   //   tweets.data.data.map((tweet) => {

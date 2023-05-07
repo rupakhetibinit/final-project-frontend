@@ -20,6 +20,7 @@ import {
   InferGetServerSidePropsType,
 } from "next";
 import Head from "next/head";
+import Image from "next/image";
 
 export async function getServerSideProps({
   req,
@@ -39,7 +40,7 @@ export default function HomePage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   return (
-    <React.Fragment>
+    <div style={{ minWidth: "100%", height: "100%" }}>
       <Head>
         <title>Trendyy | Analyze your market</title>
       </Head>
@@ -99,31 +100,78 @@ export default function HomePage(
           )}
         </Toolbar>
       </AppBar>
+      <img
+        style={{
+          position: "absolute",
+          height: "91.3%",
+          overflow: "auto",
+        }}
+        src="https://images.unsplash.com/photo-1605778336817-121ba9819b96?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=christian-lue-ONXinOMPpCc-unsplash.jpg&w=1920"
+        width={"100%"}
+      />
       <Container
         disableGutters
         maxWidth="sm"
         component="main"
-        sx={{ pt: 8, pb: 6 }}
+        sx={{ pt: 8, pb: 6, position: "relative" }}
       >
         <Typography
           component="h1"
           variant="h2"
           align="center"
-          color="text.primary"
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            letterSpacing: "0.25rem",
+            textShadow: "4px 4px 1px black",
+          }}
           gutterBottom
         >
-          Analyze Trends And Predict your market
+          Analyze Trends
+        </Typography>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            letterSpacing: "0.25rem",
+            textShadow: "4px 4px 1px black",
+          }}
+          gutterBottom
+        >
+          And Predict Your Market
+        </Typography>
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          sx={{
+            color: "white",
+            fontWeight: "bold",
+            letterSpacing: "0.25rem",
+            textShadow: "4px 4px 1px black",
+          }}
+          gutterBottom
+        >
+          On Twitter
         </Typography>
         <Typography
           variant="h5"
           align="center"
           color="text.secondary"
           component="p"
+          sx={{
+            color: "white",
+            letterSpacing: "0.15rem",
+            textShadow: "2px 2px 1px black",
+          }}
         >
           Quickly figure out what other people are saying about your brand on
           twitter
         </Typography>
       </Container>
-    </React.Fragment>
+    </div>
   );
 }

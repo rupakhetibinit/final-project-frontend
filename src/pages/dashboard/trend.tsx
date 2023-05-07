@@ -2,7 +2,15 @@ import { Layout } from "@/components/SideMenu";
 
 import { useState, useEffect } from "react";
 import { Tweet } from "../api/gettweets";
-import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Label,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import {
   Box,
@@ -111,8 +119,12 @@ export default function Trends() {
         {!!data.length && (
           <>
             <LineChart width={800} height={400} data={data}>
-              <XAxis dataKey="name" />
-              <YAxis domain={[0, 25]} tickCount={5} />
+              <XAxis
+                tick
+                tickFormatter={(value, index) => `${index * 10}`}
+                dataKey="name"
+              />
+              <YAxis domain={[0, 20]} tickCount={5} />
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="positive" stroke="#10ba5d" />

@@ -21,7 +21,7 @@ export default async function handler(
   });
 
   twitterClient.readOnly;
-
+  const { query } = JSON.parse(req.body);
   const tweets: TweetV2[] = [];
   const now = new Date();
   const currentDate = dayjs(now);
@@ -38,8 +38,8 @@ export default async function handler(
       }
       console.log(`${i}th iteration & the dates are ${dayBefore} ${dayAfter}`);
       const twit = await twitterClient.v2.search({
-        query: "iphone" + " -is:retweet -has:links -has:mentions lang:en",
-        max_results: 10,
+        query: query + " -is:retweet -has:links -has:mentions lang:en",
+        max_results: 15,
         start_time: dayBefore,
         end_time: dayAfter,
         "tweet.fields": ["lang", "geo", "created_at"],
